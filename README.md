@@ -2,7 +2,7 @@
 
 This is initially described in our [CVPR 2018 paper](https://arxiv.org/abs/1803.03474).
 
-<img src='imgs/screenshot.png'>
+<img src='imgs/screenshot.png' height="500px">
 
 
 ## Getting Started
