@@ -1,8 +1,8 @@
 import sys
 sys.path.insert(0, './pylayer')
 sys.path.insert(0, './caffe/python')
-from tool import is_image, load_dict, vec2word, build_voc, write2txt_icdar15_e2e, contain_num, contain_symbol,\
-    non_max_suppression_fast
+from tool import is_image, load_dict, vec2word, build_voc, write2txt_icdar15_e2e, contain_num, contain_symbol, \
+    non_max_suppression
 import matplotlib.pyplot as plt
 import argparse
 import os
@@ -189,6 +189,7 @@ if __name__ == '__main__':
     print 'Called with args:'
     print args
 
+    print args.weight
     if not os.path.exists(args.prototxt_iou) or \
         not os.path.exists(args.prototxt_lstm) or \
         not os.path.exists(args.weight):
@@ -295,7 +296,7 @@ if __name__ == '__main__':
             final_words = np.array(final_words)
             final_words_score = np.array(final_words_score)
             final_box[:, -1] = 2 * final_box[:, -1] + final_words_score
-            keep_indices, temp_boxes = non_max_suppression_fast(final_box, args.nms)
+            keep_indices, temp_boxes = non_max_suppression(final_box, args.nms)
             keep_indices = np.int32(keep_indices)
 
             temp_boxes = final_box[keep_indices]

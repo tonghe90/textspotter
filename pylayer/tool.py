@@ -1,13 +1,10 @@
 
 from math import cos, sin
-#import h5py
-import numpy as np
-import cv2, math
+import math
 import os
 import pyclipper
 import numpy as np
-from shapely.geometry import Polygon
-#from skimage.transform import rotate
+
 from math import atan
 
 
@@ -42,7 +39,7 @@ def build_voc(voc_file):
 
 def is_image(file_name):
     ext = os.path.splitext(file_name)[1].lower()[1:]
-    return ext == "jpg" or ext == "png"
+    return ext == "jpg" or ext == "JPG"
 
 def vec2word(vec, dicts):
     tmp = ''
@@ -61,18 +58,8 @@ def word2vec(vec, dicts):
         res.append(dicts.index(w)+1)
     return res
 
-def gaussian1d(x, u, sig):
-    #return np.exp(-(x-u)**2 / (2*sig**2)) / (math.sqrt(2*math.pi)*sig)
-    return np.exp(-(x-u)**2 / (2*sig**2))
-
-
 
 def rotate_rect(x1,y1,x2,y2,degree,center_x,center_y):
-    # print('_______')
-    # print(center_x, center_y)
-    # center_x = float(x1+x2)/2
-    # center_y = float(y1+y2)/2
-    # print(center_x, center_y)
     points = [[x1,y1],[x2,y1],[x2,y2],[x1,y2]]
     new_points = list()
     for point in points:
@@ -86,19 +73,15 @@ def rotate_rect(x1,y1,x2,y2,degree,center_x,center_y):
 
 
 
-def non_max_suppression_fast(boxes, overlapThresh):
+def non_max_suppression(boxes, overlapThresh):
     min_score = 0
-    east_min_iou = 5
     min_iou = 0.5
     if (len(boxes)==0):
         return [], boxes
-    order = np.lexsort((tuple(boxes[:, -2]), tuple(boxes[:, -1])))
     new_boxes = boxes.copy()
-    # initialize the list of picked indexes
     pick = []
     suppressed = np.zeros((len(boxes)), dtype=np.int)
-    # compute the area of the bounding boxes and sort the bounding
-    # boxes by the bottom-right y-coordinate of the bounding box
+
     polygon = list()
     area = list()
     for box in boxes:
@@ -233,37 +216,6 @@ def box2d_to_poly(box):
 
 
 
-def levenshteinDistance(s1, s2):
-    if len(s1) > len(s2):
-        s1, s2 = s2, s1
-
-    distances = range(len(s1) + 1)
-    for i2, c2 in enumerate(s2):
-        distances_ = [i2+1]
-        for i1, c1 in enumerate(s1):
-            if c1 == c2:
-                distances_.append(distances[i1])
-            else:
-                distances_.append(1 + min((distances[i1], distances[i1 + 1], distances_[-1])))
-        distances = distances_
-    return distances[-1]
-
-
-def compare_str(s, dict_, threshold=0.5):
-    if s.isdigit():
-        s_out = s
-    elif len(s) < 3:
-        s_out = s
-
-    else:
-        distance = list()
-        for cell in dict_:
-            distance.append(levenshteinDistance(s.upper(), cell.upper()))
-        min_dis = distance.index(min(distance))
-        if len(s)==0 or float(min(distance)) / (len(s)) > threshold:
-            s_out = None
-        s_out = dict_[min_dis]
-    return s_out
 
 def load_dict(dict_file):
     with open(dict_file) as f:
@@ -294,93 +246,23 @@ def contain_symbol(word):
         if ord("a") <= ord(w) <= ord("z"):
             continue
         elif ord("0") <= ord(w) <= ord("9"):
-            #flag = 1
-	    #break
-	    continue
+            continue
         else:
             flag = 1
-	    break
-            
-
+            break
     return flag
+
 def contain_num(word):
     length = len(word)
     flag = 0
     for n in range(length):
-	w = word[n]
-	if ord("0")<=ord(w)<=ord("9"):
-	    flag = 1
-	    break
+        w = word[n]
+        if ord("0")<=ord(w)<=ord("9"):
+            flag = 1
+            break
     return flag
 
 
 
-def write2txt_icdar13(file, res):
-    f = open(file, 'w')
-    det_num = res.shape[0]
-
-    if det_num == 0:
-        f.close()
-        return
-
-    for i in range(det_num):
-        xmin = np.min(res[i, :8:2])
-        ymin = np.min(res[i, 1:8:2])
-        xmax = np.max(res[i, :8:2])
-        ymax = np.max(res[i, 1:8:2])
-	if (ymax-ymin) / (xmax-xmin) > 2.5:
-	    continue
-        f.write('%d,%d,%d,%d\r\n' % (xmin,ymin,xmax,ymax))
-    f.close()
 
 
-def write2txt_icdar13_e2e(file, res, words):
-    f = open(file, 'w')
-    det_num = res.shape[0]
-
-    if det_num == 0:
-        f.close()
-        return
-
-    for i in range(det_num):
-        xmin = np.min(res[i, :8:2])
-        ymin = np.min(res[i, 1:8:2])
-        xmax = np.max(res[i, :8:2])
-        ymax = np.max(res[i, 1:8:2])
-	if (ymax-ymin) / (xmax-xmin) >1:
-	    continue
-        f.write('%d,%d,%d,%d,%d,%d,%d,%d,%s\r\n' % (xmin,ymin,xmax,ymin,xmax,ymax,xmin,ymax,words[i]))
-    f.close()
-
-
-
-def det_nms_boxes(pre_score, pre_bbox, pre_orient, fcn_th, nms_th):
-    #pre_bbox *= rf
-    pos_y, pos_x = np.where(pre_score > fcn_th)
-    bboxes = np.zeros((len(pos_y), 7), dtype='float32')
-    orients = np.zeros((len(pos_y)), dtype='float32')
-    for i in range(len(pos_y)):
-        y = pos_y[i]
-        x = pos_x[i]
-        t, b, l, r = pre_bbox[:, y, x]
-        bboxes[i] = np.asarray((x - l, y - t, x + r, y + b, pre_score[y, x], x, y))
-        orients[i] = pre_orient[y, x]
-    orient_bboxes = np.zeros((len(bboxes), 11), dtype='float32')
-    for i, box in enumerate(bboxes):
-        box[0] *= 4
-        box[2] *= 4
-        box[1] *= 4
-        box[3] *= 4
-        box[5] *= 4
-        box[6] *= 4
-        temp_box = rotate_rect(box[0], box[1], box[2], box[3], orients[i], box[5], box[6])
-        orient_bboxes[i] = np.array((temp_box[0][0], temp_box[0][1], temp_box[1][0], temp_box[1][1], temp_box[2][0],
-                                     temp_box[2][1], temp_box[3][0], temp_box[3][1], box[4], box[-2], box[-1]))
-    keep_indices, temp_boxes = non_max_suppression_fast(orient_bboxes, nms_th)
-    # assert len(keep_indices)==len(temp_boxes)
-    # orient_bboxes = temp_boxes[keep_indices]
-    orient_bboxes = orient_bboxes[keep_indices]
-    # if len(orient_bboxes) > 0:
-    #     set_blob_data(top[0], np.array(np.hstack((np.zeros((orient_bboxes.shape[0], 1)), orient_bboxes[:, :9])),
-    #                                    dtype=np.float32))
-    return np.array(orient_bboxes[:, :9])
