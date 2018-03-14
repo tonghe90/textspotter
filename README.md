@@ -24,7 +24,8 @@ make pycaffe
 
 - install editdistance and pyclipper: `pip install editdistance` and  `pip install pyclipper`
 
-- After Caffe is set up, you need to download a trained model (about 40M) from [Google Drive](https://drive.google.com/open?id=1lzM-V1Ec8KHr8fKxeO_d1x3zFaj3bmnU)
+- After Caffe is set up, you need to download a trained model (about 40M) from [Google Drive](https://drive.google.com/open?id=1lzM-V1Ec8KHr8fKxeO_d1x3zFaj3bmnU). This model
+  is trained with [VGG800k](http://www.robots.ox.ac.uk/~vgg/data/scenetext/) and finetuned on [ICDAR2015](http://rrc.cvc.uab.es/?ch=4&com=introduction).
 - Run `python test.py --img=./imgs/img_105.jpg`
 
 - arguments:
