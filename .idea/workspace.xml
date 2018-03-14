@@ -2,45 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9488109c-8437-49b2-8097-a88758cd6c8b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/ctaloadbalance.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/ctamerge.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/ctascan.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/ctasearch.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/ctasegreduce.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/ctasegscan.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/ctasegsort.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/ctasortedsearch.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/devicetypes.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/deviceutil.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/intrinsics.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/loadstore.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/serialsets.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/device/sortnetwork.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/mgpudevice.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/mgpuenums.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/contrib/moderngpu/include/util/static.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/ctc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/detail/cpu_ctc.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/detail/ctc_helper.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/detail/gpu_ctc.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/detail/gpu_ctc_kernels.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/detail/hostdevice.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/3rdparty/detail/reduce.cuh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/include/caffe/layers/sequence_layers.hpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/3rdparty/ctc_entrypoint.cu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/3rdparty/reduce.cu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/layers/abstract_rnn_layer.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/layers/abstract_rnn_layer.cu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/layers/accuracy_text_layer.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/layers/reverse_layer.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/layers/reverse_layer.cu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/layers/sllstm_layer.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/layers/sllstm_layer.cu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/layers/standard_ctc_layer.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/caffe/src/caffe/layers/standard_ctc_layer.cu" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pylayer/tool.py" afterPath="$PROJECT_DIR$/pylayer/tool.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pylayer/tool_layers.py" afterPath="$PROJECT_DIR$/pylayer/tool_layers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
     <ignored path="textspotter.iws" />
@@ -64,18 +26,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="207" column="28" selection-start-line="207" selection-start-column="28" selection-end-line="207" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+            <state relative-caret-position="968">
+              <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -94,18 +46,28 @@
       <file leaf-file-name="tool_layers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pylayer/tool_layers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="194">
+              <caret line="202" column="16" selection-start-line="202" selection-start-column="16" selection-end-line="202" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tool.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tool.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pylayer/tool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+            <state relative-caret-position="1440">
+              <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
               <folding>
                 <element signature="e#1#26#0" expanded="true" />
               </folding>
@@ -130,17 +92,17 @@
       <list>
         <option value="$PROJECT_DIR$/test_icdar_e2e_lex_15.py" />
         <option value="$PROJECT_DIR$/cfg.py" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/pylayer/tool_layers.py" />
         <option value="$PROJECT_DIR$/pylayer/tool.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="992" />
+    <option name="x" value="446" />
     <option name="y" value="52" />
-    <option name="width" value="927" />
+    <option name="width" value="1918" />
     <option name="height" value="1028" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -442,10 +404,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="992" y="52" width="927" height="1028" extended-state="4" />
+    <frame x="446" y="52" width="1918" height="1028" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42394823" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20490094" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -549,6 +511,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pylayer/tool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
+          <folding>
+            <element signature="e#1#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="968">
+          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cfg.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -557,37 +537,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="207" column="28" selection-start-line="207" selection-start-column="28" selection-end-line="207" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pylayer/tool_layers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="194">
+          <caret line="202" column="16" selection-start-line="202" selection-start-column="16" selection-end-line="202" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pylayer/tool.py">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding>
-            <element signature="e#1#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="396">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

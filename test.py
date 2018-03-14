@@ -22,34 +22,40 @@ def parse_args():
         '--weight',
         dest='weight',
         default='./models/textspotter.caffemodel',
+        help='the weight file (caffemodel)',
         type=str)
     parser.add_argument(
         '--prototxt-iou',
         dest='prototxt_iou',
         default='./models/test_iou.pt',
+        help='prototxt file for detection',
         type=str)
     parser.add_argument(
         '--prototxt-lstm',
         dest='prototxt_lstm',
         default='./models/test_lstm.pt',
+        help='prototxt file for recognition',
         type=str)
 
     parser.add_argument(
         '--img',
         dest='img',
         default='./imgs/img_105.jpg',
+        help='img file or folder',
         type=str
     )
     parser.add_argument(
         '--thresholds-ms',
         dest='thresholds',
         default='0.95, 0.95, 0.95, 0.95',
+        help='multiscale thresholds for text region prediction',
         type=str
     )
     parser.add_argument(
-        '--scales',
+        '--scales-ms',
         dest='scales',
         default='2240, 1920, 1792, 2080',
+        help='multiscales for testing',
         type=str
     )
 
@@ -57,13 +63,8 @@ def parse_args():
         '--nms',
         dest='nms',
         default=0.2,
+        help='nms threshold',
         type=float
-    )
-    parser.add_argument(
-        '--rf',
-        dest='rf',
-        default=10,
-        type=int
     )
 
     parser.add_argument(
@@ -72,9 +73,6 @@ def parse_args():
         default='./results',
         type=str
     )
-
-
-
 
     args = parser.parse_args()
     return args
