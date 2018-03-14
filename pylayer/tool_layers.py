@@ -3,11 +3,10 @@ import sys
 sys.path.insert(0, '../caffe/python')
 import caffe
 import yaml
-from tool import set_blob_data, set_blob_diff, gaussian1d, polyes_to_boxes2d_rotate, box2d_to_poly, rotate, rotate_rect, non_max_suppression
+from tool import set_blob_data, rotate_rect, non_max_suppression
 import numpy as np
-from math import atan, atan2
-import cv2
-import math
+from math import atan
+
 
 MAX_LEN = 25
 
