@@ -1,0 +1,19 @@
+net: "train_pvanet.pt"
+#test_interval: 1000
+#test_iter: 100
+base_lr: 0.0002
+lr_policy: "multistep"
+gamma: 0.1
+stepvalue: 120000
+stepvalue: 180000
+display: 10
+average_loss: 10
+max_iter: 240000
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 1000
+snapshot_prefix: "models/icdar15"
+# debug_info: true
+# iter_size: 4
+# clip_gradients: 5
+random_seed: 111
