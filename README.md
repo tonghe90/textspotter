@@ -2,7 +2,7 @@
 
 This is initially described in our [CVPR 2018 paper](https://arxiv.org/abs/1803.03474).
 
-<img src='imgs/horse2zebra.gif' align="right" width=384>
+<img src='imgs/screenshot.png' align="right" width=384>
 
 
 ## Getting Started
