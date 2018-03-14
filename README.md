@@ -28,7 +28,7 @@ make pycaffe
   is trained with [VGG800k](http://www.robots.ox.ac.uk/~vgg/data/scenetext/) and finetuned on [ICDAR2015](http://rrc.cvc.uab.es/?ch=4&com=introduction).
 - Run `python test.py --img=./imgs/img_105.jpg`
 
-- arguments:
+- hyperparameters:
 
 ```bash
 cfg.py --mean_val ==> mean value during the testing.
