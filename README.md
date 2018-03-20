@@ -59,5 +59,5 @@ If you use this code for your research, please cite our papers.
 ```
 ## License
 
-This code is for non-commercial purposes only. For commerical purposes, please contact Chunhua Shen <chhshen@gmail.com>.
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>. 
+This code is for NON-COMMERCIAL purposes only. For commerical purposes, please contact Chunhua Shen <chhshen@gmail.com>.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3. Please refer to <http://www.gnu.org/licenses/> for more details.
