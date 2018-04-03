@@ -30,7 +30,7 @@ make pycaffe
 
 - hyperparameters:
 
-```bash
+```
 cfg.py --mean_val ==> mean value during the testing.
        --max_len ==> maximum length of the text string (here we take 25, meaning a word can contain 25 characters at most.)
        --recog_th ==> the threshold during the recognition process. The score for a word is the average mean of every character.
@@ -44,8 +44,11 @@ test.py --weight ==> weights file of caffemodel
         --thresholds-ms ==> corresponding thresholds of text region for multiscale inputs.
         --nms ==> nms threshold for testing
         --save-dir ==> the dir for save results in format of ICDAR2015 submition.
+```
 
-One thing should be noted: the recognition results are achieved by comparing direct output with words in dictionary, which has about 90K lexicons. These lexicons don't contain any number and symbol. You can delete dictionary reference part and directly output recognition results.
+```
+One thing should be noted: the recognition results are achieved by comparing direct output with words in dictionary, which has about 90K lexicons. 
+These lexicons don't contain any number and symbol. You can delete dictionary reference part and directly output recognition results.
 ```
 
 ## Citation
