@@ -19,7 +19,7 @@ cd textspotter
 # change Makefile.config according to your library path
 * cp Makefile.config.example Makefile.config
 * make -j8
-* make pycaffe (If you come across build issue about std::allocator, please refer to [this](https://github.com/tonghe90/textspotter/issues/3))
+* make pycaffe. If you come across build issue about std::allocator, please refer to [this tutorial](http://caffe.berkeleyvision.org/installation.html)
 ```
 
 
