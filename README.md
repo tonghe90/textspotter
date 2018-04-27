@@ -20,6 +20,7 @@ cd textspotter
 cp Makefile.config.example Makefile.config
 make -j8
 make pycaffe
+(If you come across build issue about std::allocator, please refer to [this](https://github.com/tonghe90/textspotter/issues/3))
 ```
 
 - install editdistance and pyclipper: `pip install editdistance` and  `pip install pyclipper`
