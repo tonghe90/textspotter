@@ -13,13 +13,14 @@ git clone https://github.com/tonghe90/textspotter
 cd textspotter
 ```
 
-- Install caffe. You can follow this [this tutorial](http://caffe.berkeleyvision.org/installation.html)
+- Install caffe. You can follow this [this tutorial](http://caffe.berkeleyvision.org/installation.html). 
+If you have build problem about std::allocater, please refer to [this #3](https://github.com/tonghe90/textspotter/issues/3)
 ```bash
 # make sure you set WITH_PYTHON_LAYER := 1
 # change Makefile.config according to your library path
-* cp Makefile.config.example Makefile.config
-* make -j8
-* make pycaffe. If you come across build issue about std::allocator, please refer to [this tutorial](http://caffe.berkeleyvision.org/installation.html)
+cp Makefile.config.example Makefile.config
+make -j8
+make pycaffe
 ```
 
 
