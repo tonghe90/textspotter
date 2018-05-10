@@ -167,7 +167,7 @@ def forward_reg(decoder_rec, net_rec, det_bboxes, recog_th=0.85):
             print float(sum(score)) / len(score), vec2word(previous_words, dicts)
             if float(sum(score)) / len(score) < recog_th:
                 continue
-            tmp = det_bboxes[i].copy()
+            tmp = det_bboxes[i].copy().tolist()
             # tmp[-1]+=float(sum(score)) / len(score) * 2
             boxes.append(tmp)
             words.append(vec2word(previous_words, dicts))
@@ -230,9 +230,9 @@ if __name__ == '__main__':
 
     ### forward single image
     for ind, image_name in enumerate(imgs_files):
-        new_boxes = list()
-        words = list()
-        words_score = list()
+        new_boxes = np.zeros((0, 9))
+        words = np.zeros(0)
+        words_score = np.zeros(0)
         image_id = image_name.split('/')[-1].split('.')[0]
         print '%d / %d: ' % (ind+1, len(imgs_files)), image_name
         im = cv2.imread(image_name)
@@ -243,20 +243,29 @@ if __name__ == '__main__':
             mask_threshold = thresholds[k]
             det_bboxes, decoder_rec = forward_iou(im, net_iou, image_resize_length, mask_threshold)
             det_num = det_bboxes.shape[0]
-            new_boxes, words, words_score = forward_reg(decoder_rec, net_rec, det_bboxes, cfg.recog_th)
+            #new_boxes, words, words_score = forward_reg(decoder_rec, net_rec, det_bboxes, cfg.recog_th)
+            boxes_k, words_k, words_score_k = forward_reg(decoder_rec, net_rec, det_bboxes, cfg2.recog_th)
+            if len(boxes_k) > 0:
+                new_boxes = np.concatenate([new_boxes, np.array(boxes_k)], axis=0)
+                words = np.concatenate([words, np.array(words_k)])
+                words_score = np.concatenate([words_score, np.array(words_score_k)])
+
+
 
         if len(new_boxes) == 0:
             out_name = os.path.join(args.save_dir, 'res_' + image_id + '.txt')
             new_boxes = np.zeros((0, 8))
             words = np.zeros((0, 8))
             write2txt_icdar15_e2e(out_name, new_boxes, words)
-        if len(new_boxes) > 0:
+        else:
             new_boxes = np.array(new_boxes)
+            new_boxes = np.reshape(new_boxes, [-1,9])
             words = np.array(words)
             words_score = np.array(words_score)
             assert new_boxes.shape[1] == 9
             assert len(new_boxes) == len(words)
             assert len(new_boxes) == len(words_score)
+
 
             final_box = list()
             final_words = list()
