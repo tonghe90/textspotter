@@ -244,7 +244,7 @@ if __name__ == '__main__':
             det_bboxes, decoder_rec = forward_iou(im, net_iou, image_resize_length, mask_threshold)
             det_num = det_bboxes.shape[0]
             #new_boxes, words, words_score = forward_reg(decoder_rec, net_rec, det_bboxes, cfg.recog_th)
-            boxes_k, words_k, words_score_k = forward_reg(decoder_rec, net_rec, det_bboxes, cfg2.recog_th)
+            boxes_k, words_k, words_score_k = forward_reg(decoder_rec, net_rec, det_bboxes, cfg.recog_th)
             if len(boxes_k) > 0:
                 new_boxes = np.concatenate([new_boxes, np.array(boxes_k)], axis=0)
                 words = np.concatenate([words, np.array(words_k)])
