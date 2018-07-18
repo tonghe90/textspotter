@@ -19,6 +19,7 @@ If you have build problem about std::allocater, please refer to [this #3](https:
 # make sure you set WITH_PYTHON_LAYER := 1
 # change Makefile.config according to your library path
 cp Makefile.config.example Makefile.config
+make clean
 make -j8
 make pycaffe
 ```
