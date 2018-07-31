@@ -25,8 +25,12 @@ make pycaffe
 ```
 ### Training
 ```
-we provide part of the training code. But you can not run this directly. We have give the comment in the [train.pt](https://github.com/tonghe90/textspotter/models/train.pt).
-You have to write your own layer, IOUloss layer. We cannot publish this for some IP reason. To be noticed: [L6902](https://github.com/tonghe90/textspotter/models/train.pt#L6902), [L6947](https://github.com/tonghe90/textspotter/models/train.pt#L6907)
+we provide part of the training code. But you can not run this directly. 
+We have give the comment in the [train.pt](https://github.com/tonghe90/textspotter/models/train.pt).
+You have to write your own layer, IOUloss layer. We cannot publish this for some IP reason. 
+To be noticed: 
+(1)[L6902](https://github.com/tonghe90/textspotter/models/train.pt#L6902), 
+(2)[L6947](https://github.com/tonghe90/textspotter/models/train.pt#L6907)
 ```
 
 - install editdistance and pyclipper: `pip install editdistance` and  `pip install pyclipper`
