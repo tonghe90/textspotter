@@ -260,3 +260,123 @@ class det_nms_layer(caffe.Layer):
             if len(top) > 1:
                 set_blob_data(top[1], np.zeros((25, 1), dtype=np.float32))
 
+
+
+MAX_LEN = cfg.MAX_LEN
+class gen_gts_layer(caffe.Layer):
+    """
+    bottom[0]: gt_label [N,1,sz,sz]
+
+
+    top[0]: rois N * 9
+    top[1]: cont T * N
+    top[2]: input_lobel T * N
+    top[3]: output_label T * N
+    """
+
+    def setup(self, bottom, top):
+        layer_params = yaml.load(self.param_str)
+        self.sel_num = layer_params['sel_num']
+        ### 1 for training, 0 for testing
+        self.phase = layer_params.get('phase', 1)
+
+
+    def reshape(self, bottom, top):
+        set_blob_data(top[0], np.zeros((1, 9), dtype=np.float32))
+        set_blob_data(top[1], np.zeros((MAX_LEN, 1), dtype=np.float32))
+        set_blob_data(top[2], np.zeros((MAX_LEN, 1), dtype=np.float32))
+        set_blob_data(top[3], np.zeros((MAX_LEN, 1), dtype=np.float32))
+        if len(top)>4:
+            set_blob_data(top[4], np.zeros((1, 5), dtype=np.float32))
+
+    def backward(self, top, propagate_down, bottom):
+        pass
+
+    def forward(self, bottom, top):
+        batch_size = bottom[0].data.shape[0]
+        # gt_boxes = []
+        cont = []
+        input_label = []
+        output_label = []
+        gt_boxes = np.zeros((0, 9))
+
+
+        for n in range(batch_size):
+            gt_label = bottom[0].data[n, 0]
+            tmp = np.sum(gt_label, axis=1)
+            gt_num = len(np.where(tmp != 0)[0])
+            if gt_num == 0:
+                continue
+
+            roi_n = gt_label[:gt_num, :8] * 4
+            roi_n = np.hstack((np.ones((gt_num, 1)) * n, roi_n))
+
+            gt_boxes = np.vstack((gt_boxes, roi_n))
+
+            for k in range(gt_num):
+                label_len = int(gt_label[k, 9])
+                if label_len > MAX_LEN-1:
+                    cont.append([0]*MAX_LEN)
+                    input_label.append([0]*MAX_LEN)
+                    output_label.append([-1]*MAX_LEN)
+                    continue
+                pad = MAX_LEN - label_len - 1
+                cont_tmp = [0] + [1] * label_len + [0] * pad
+                cont.append(cont_tmp)
+                input_tmp = [0] + list(gt_label[k, 10:10+label_len]) + [-1] * pad
+                input_label.append(input_tmp)
+
+                output_tmp = list(gt_label[k, 10:10+label_len]) + [0] + [-1] * pad
+                output_label.append(output_tmp)
+
+
+        if len(gt_boxes) == 0:
+            set_blob_data(top[0], np.zeros((1, 9), dtype=np.float32))
+            set_blob_data(top[1], np.zeros((MAX_LEN, 1), dtype=np.float32))
+            set_blob_data(top[2], np.zeros((MAX_LEN, 1), dtype=np.float32))
+            set_blob_data(top[3], -np.ones((MAX_LEN, 1), dtype=np.float32))
+            if len(top) > 4:
+                set_blob_data(top[4], np.zeros((1, 5), dtype=np.float32))
+
+            return
+
+
+        gt_boxes = np.array(gt_boxes).reshape(-1, 9)
+
+        cont = np.array(cont, dtype=np.float32).reshape(-1, MAX_LEN).transpose(1,0)
+        input_label = np.array(input_label, dtype=np.float32).reshape(-1, MAX_LEN).transpose(1,0)
+        output_label = np.array(output_label,dtype=np.float32).reshape(-1, MAX_LEN).transpose(1,0)
+
+
+        gt_len = gt_boxes.shape[0]
+
+        sel_num = min(gt_len, self.sel_num)
+        sel_ids = np.int32(np.random.choice(np.arange(gt_len), sel_num, replace = False))
+        gt_boxes = gt_boxes[sel_ids]
+        cont = cont[:, sel_ids]
+        input_label = input_label[:, sel_ids]
+        output_label = output_label[:, sel_ids]
+
+        rects = np.zeros((gt_boxes.shape[0], 5), dtype=np.float32)
+        for nn in range(gt_boxes.shape[0]):
+            rects[nn, 0] = gt_boxes[nn, 0]
+            rects[nn, 1] = np.min(gt_boxes[nn, [1, 3, 5, 7]])
+            rects[nn, 2] = np.min(gt_boxes[nn, [2, 4, 6, 8]])
+            rects[nn, 3] = np.max(gt_boxes[nn, [1, 3, 5, 7]])
+            rects[nn, 4] = np.max(gt_boxes[nn, [2, 4, 6, 8]])
+
+
+        if self.phase == 0:
+           cont = np.ones((25, int(cont.shape[1])), dtype=np.float32)
+           cont[0,:] = 0
+
+
+        set_blob_data(top[0], gt_boxes)
+        set_blob_data(top[1], cont)
+        set_blob_data(top[2], input_label)
+        set_blob_data(top[3], output_label)
+        if len(top)>4:
+            set_blob_data(top[4], rects)
+
+
+
