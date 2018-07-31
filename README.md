@@ -29,10 +29,11 @@ we provide part of the training code. But you can not run this directly.
 We have give the comment in the [train.pt](https://github.com/tonghe90/textspotter/models/train.pt).
 You have to write your own layer, IOUloss layer. We cannot publish this for some IP reason. 
 To be noticed: 
-(1)[L6902](https://github.com/tonghe90/textspotter/models/train.pt#L6902), 
-(2)[L6947](https://github.com/tonghe90/textspotter/models/train.pt#L6907)
+[L6902](https://github.com/tonghe90/textspotter/models/train.pt#L6902) 
+[L6947](https://github.com/tonghe90/textspotter/models/train.pt#L6907)
 ```
 
+### Testing
 - install editdistance and pyclipper: `pip install editdistance` and  `pip install pyclipper`
 
 - After Caffe is set up, you need to download a trained model (about 40M) from [Google Drive](https://drive.google.com/open?id=1lzM-V1Ec8KHr8fKxeO_d1x3zFaj3bmnU). This model
