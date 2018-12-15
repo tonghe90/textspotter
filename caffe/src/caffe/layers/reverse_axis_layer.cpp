@@ -58,7 +58,7 @@ void ReverseAxisLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
 bottom[0]->shape(axis_), axis_);
 }
 #ifdef CPU_ONLY
-STUB_GPU(ReverseLayer);
+STUB_GPU(ReverseAxisLayer);
 #endif
 
 INSTANTIATE_CLASS(ReverseAxisLayer);
